@@ -1,0 +1,4 @@
+2026-02-26 19:04:46,296 - ERROR - Error al consumir API: HTTPSConnectionPool(host='www.cheapshark.com', port=443): Max retries exceeded with url: /api/1.0/deals?storeID=1&upperPrice=30&pageSize=30&sortBy=Savings (Caused by NameResolutionError("HTTPSConnection(host='www.cheapshark.com', port=443): Failed to resolve 'www.cheapshark.com' ([Errno -3] Temporary failure in name resolution)"))
+2026-02-26 19:20:26,607 - INFO - Datos extraídos correctamente de CheapShark
+2026-02-26 19:20:26,632 - INFO - CSV guardado en data/deals.csv
+2026-02-26 19:20:26,634 - INFO - JSON guardado en data/deals_raw.json
