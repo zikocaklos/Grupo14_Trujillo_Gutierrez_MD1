@@ -1,4 +1,4 @@
-#!/home/zikocaklos/etl-weatherstack/venv/bin/python3
+#!/home/zikocaklos/proyectos_mineria/etl-weatherstack/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
