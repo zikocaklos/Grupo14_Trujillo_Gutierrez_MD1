@@ -16,3 +16,10 @@
 2026-03-13 14:08:10,342 - INFO - 📊 Registro guardado para Barranquilla
 2026-03-13 14:08:10,606 - ERROR - ❌ Error extrayendo datos para Cartagena: 429 Client Error: Too Many Requests for url: https://api.weatherstack.com/current?access_key=a2d60abf66bb271b29eb7b4b7395a6eb&query=Cartagena
 2026-03-13 14:08:10,623 - INFO - 📈 Métricas guardadas: Extraídos: 2, Guardados: 2, Fallidos: 3
+2026-04-15 23:04:59,956 - ERROR - ❌ Error creando/verificando tablas: (psycopg2.OperationalError) connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 6543 failed: FATAL:  database "etlweatherstack" does not exist
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-04-15 23:10:07,736 - INFO - ✅ Tablas creadas/verificadas correctamente
+2026-04-15 23:10:07,772 - INFO - 📁 Datos transformados encontrados: 1000 filas
+2026-04-15 23:14:29,030 - INFO - ✅ Tablas creadas/verificadas correctamente
+2026-04-15 23:14:29,066 - INFO - 📁 Datos transformados encontrados: 1000 filas

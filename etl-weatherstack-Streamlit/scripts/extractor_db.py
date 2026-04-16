@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 import os
-import requests
-import json
-import pandas as pd
-from datetime import datetime
-import time
-from dotenv import load_dotenv
+import sys
 import logging
+from pathlib import Path
+from datetime import datetime
+from dotenv import load_dotenv
+import pandas as pd
 from sqlalchemy.exc import IntegrityError
 
-from scripts.database import SessionLocal
+BASE_DIR = Path(__file__).resolve().parent.parent
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+from scripts.database import SessionLocal, Base, engine
 from scripts.models import Ciudad, RegistroClima, MetricasETL
 
 load_dotenv()
@@ -24,183 +27,155 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-class WeatherstackETL:
-    def __init__(self):
-        self.api_key = os.getenv('API_KEY')
-        self.base_url = os.getenv('WEATHERSTACK_BASE_URL')
-        self.ciudades = [c.strip() for c in os.getenv('CIUDADES').split(',')]
-        self.db = SessionLocal()
-        self.tiempo_inicio = time.time()
-        self.registros_extraidos = 0
-        self.registros_guardados = 0
-        self.registros_fallidos = 0
+DATA_DIR = BASE_DIR / 'data'
+INPUT_CSV = DATA_DIR / 'clima_transformado.csv'
+INPUT_JSON = DATA_DIR / 'clima_transformado.json'
 
-        if not self.api_key:
-            raise ValueError("API_KEY no configurada en .env")
+REQUIRED_COLUMNS = [
+    'ciudad', 'pais', 'latitud', 'longitud',
+    'temperatura', 'sensacion_termica', 'humedad',
+    'velocidad_viento', 'descripcion', 'codigo_tiempo',
+    'fecha_extraccion'
+]
 
-    def extraer_clima(self, ciudad_nombre):
-        """Extrae datos de clima para una ciudad específica"""
-        try:
-            url = f"{self.base_url}/current"
-            params = {
-                'access_key': self.api_key,
-                'query': ciudad_nombre.strip()
-            }
 
-            response = requests.get(url, params=params, timeout=10)
-            response.raise_for_status()
+def crear_tablas_si_no_existen():
+    try:
+        Base.metadata.create_all(bind=engine)
+        logger.info('✅ Tablas creadas/verificadas correctamente')
+    except Exception as e:
+        logger.error(f'❌ Error creando/verificando tablas: {str(e)}')
+        raise
 
-            data = response.json()
 
-            if 'error' in data:
-                logger.error(f"❌ Error en API para {ciudad_nombre}: {data['error']['info']}")
-                self.registros_fallidos += 1
-                return None
+def cargar_transformado():
+    if INPUT_CSV.exists():
+        df = pd.read_csv(INPUT_CSV)
+    elif INPUT_JSON.exists():
+        df = pd.read_json(INPUT_JSON)
+    else:
+        raise FileNotFoundError(
+            'No se encontró clima_transformado.csv ni clima_transformado.json en data/. Ejecuta primero scripts/transformador.py'
+        )
 
-            self.registros_extraidos += 1
-            logger.info(f"✅ Datos extraídos para {ciudad_nombre}")
-            return data
+    df.columns = [col.strip().lower() for col in df.columns]
+    return df
 
-        except Exception as e:
-            logger.error(f"❌ Error extrayendo datos para {ciudad_nombre}: {str(e)}")
-            self.registros_fallidos += 1
-            return None
 
-    def procesar_respuesta(self, response_data):
-        """Transforma respuesta JSON a diccionario"""
-        try:
-            current = response_data.get('current', {})
-            location = response_data.get('location', {})
+def preparar_ciudades(session, df):
+    ciudades_unicas = df[[
+        'ciudad', 'pais', 'latitud', 'longitud'
+    ]].drop_duplicates(subset=['ciudad'])
 
-            return {
-                'ciudad': location.get('name'),
-                'pais': location.get('country'),
-                'latitud': location.get('lat'),
-                'longitud': location.get('lon'),
-                'temperatura': current.get('temperature'),
-                'sensacion_termica': current.get('feelslike'),
-                'humedad': current.get('humidity'),
-                'velocidad_viento': current.get('wind_speed'),
-                'descripcion': current.get('weather_descriptions', ['N/A'])[0],
-                'codigo_tiempo': current.get('weather_code')
-            }
-        except Exception as e:
-            logger.error(f"Error procesando respuesta: {str(e)}")
-            return None
+    nombres = [str(v).strip() for v in ciudades_unicas['ciudad'].tolist()]
+    existing = session.query(Ciudad).filter(Ciudad.nombre.in_(nombres)).all()
+    existing_map = {c.nombre: c for c in existing}
 
-    def guardar_en_bd(self, datos_procesados):
-        """Guarda los datos en PostgreSQL"""
-        try:
-            # Busca o crea la ciudad
-            ciudad = self.db.query(Ciudad).filter_by(
-                nombre=datos_procesados['ciudad']
-            ).first()
-
-            if not ciudad:
-                ciudad = Ciudad(
-                    nombre=datos_procesados['ciudad'],
-                    pais=datos_procesados['pais'],
-                    latitud=datos_procesados['latitud'],
-                    longitud=datos_procesados['longitud']
+    nuevas = []
+    for _, row in ciudades_unicas.iterrows():
+        nombre = str(row['ciudad']).strip()
+        if nombre not in existing_map:
+            nuevas.append(
+                Ciudad(
+                    nombre=nombre,
+                    pais=str(row['pais']).strip(),
+                    latitud=float(row['latitud']),
+                    longitud=float(row['longitud'])
                 )
-                self.db.add(ciudad)
-                self.db.flush()  # Flush para obtener el ID
+            )
 
-            # Crea nuevo registro de clima
-            registro = RegistroClima(
+    if nuevas:
+        session.add_all(nuevas)
+        session.commit()
+        for ciudad in nuevas:
+            existing_map[ciudad.nombre] = ciudad
+
+    return existing_map
+
+
+def cargar_registros(session, df, ciudades_map):
+    registros = []
+    for _, row in df.iterrows():
+        ciudad_nombre = str(row['ciudad']).strip()
+        ciudad = ciudades_map.get(ciudad_nombre)
+        if not ciudad:
+            logger.warning(f'Ciudad no encontrada en el mapeo: {ciudad_nombre}')
+            continue
+
+        fecha_extraccion = pd.to_datetime(row.get('fecha_extraccion'), errors='coerce')
+        if pd.isna(fecha_extraccion):
+            fecha_extraccion = datetime.utcnow()
+
+        registros.append(
+            RegistroClima(
                 ciudad_id=ciudad.id,
-                temperatura=datos_procesados['temperatura'],
-                sensacion_termica=datos_procesados['sensacion_termica'],
-                humedad=datos_procesados['humedad'],
-                velocidad_viento=datos_procesados['velocidad_viento'],
-                descripcion=datos_procesados['descripcion'],
-                codigo_tiempo=datos_procesados['codigo_tiempo']
+                temperatura=float(row.get('temperatura') or 0),
+                sensacion_termica=float(row.get('sensacion_termica') or 0),
+                humedad=float(row.get('humedad') or 0),
+                velocidad_viento=float(row.get('velocidad_viento') or 0),
+                descripcion=str(row.get('descripcion') or 'Desconocido').strip(),
+                codigo_tiempo=int(row.get('codigo_tiempo') or 0),
+                fecha_extraccion=fecha_extraccion.to_pydatetime()
             )
+        )
 
-            self.db.add(registro)
-            self.db.commit()
-            self.registros_guardados += 1
+    if registros:
+        session.bulk_save_objects(registros)
+        session.commit()
 
-            logger.info(f"📊 Registro guardado para {datos_procesados['ciudad']}")
-            return True
+    return len(registros)
 
-        except IntegrityError as e:
-            self.db.rollback()
-            logger.error(f"Error de integridad: {str(e)}")
-            self.registros_fallidos += 1
-            return False
-        except Exception as e:
-            self.db.rollback()
-            logger.error(f"Error guardando en BD: {str(e)}")
-            self.registros_fallidos += 1
-            return False
 
-    def guardar_metricas(self, estado):
-        """Guarda métricas de la ejecución"""
-        try:
-            tiempo_ejecucion = time.time() - self.tiempo_inicio
-            metricas = MetricasETL(
-                registros_extraidos=self.registros_extraidos,
-                registros_guardados=self.registros_guardados,
-                registros_fallidos=self.registros_fallidos,
-                tiempo_ejecucion_segundos=tiempo_ejecucion,
-                estado=estado,
-                mensaje=f"Extraídos: {self.registros_extraidos}, Guardados: {self.registros_guardados}, Fallidos: {self.registros_fallidos}"
-            )
-            self.db.add(metricas)
-            self.db.commit()
-            logger.info(f"📈 Métricas guardadas: {metricas.mensaje}")
-        except Exception as e:
-            logger.error(f"Error guardando métricas: {str(e)}")
+def guardar_metricas(session, extraidos, guardados, fallidos, estado):
+    tiempo_ejecucion = (datetime.utcnow() - START_TIME).total_seconds()
+    metricas = MetricasETL(
+        registros_extraidos=extraidos,
+        registros_guardados=guardados,
+        registros_fallidos=fallidos,
+        tiempo_ejecucion_segundos=tiempo_ejecucion,
+        estado=estado,
+        mensaje=f'Extraídos: {extraidos}, Guardados: {guardados}, Fallidos: {fallidos}'
+    )
+    session.add(metricas)
+    session.commit()
 
-    def ejecutar(self):
-        """Ejecuta el pipeline completo"""
-        try:
-            logger.info(f"Iniciando ETL para {len(self.ciudades)} ciudades...")
 
-            for ciudad in self.ciudades:
-                response = self.extraer_clima(ciudad)
-                if response:
-                    datos = self.procesar_respuesta(response)
-                    if datos:
-                        self.guardar_en_bd(datos)
+def main():
+    global START_TIME
+    START_TIME = datetime.utcnow()
 
-            # Determina estado
-            estado = "SUCCESS" if self.registros_fallidos == 0 else "PARTIAL"
-            self.guardar_metricas(estado)
+    print('\n' + '=' * 50)
+    print('CARGA DE DATOS TRANSFORMADOS A LA BASE DE DATOS')
+    print('=' * 50)
 
-            return estado == "SUCCESS"
+    crear_tablas_si_no_existen()
 
-        except Exception as e:
-            logger.error(f"Error en ETL: {str(e)}")
-            self.guardar_metricas("FAILED")
-            return False
+    df = cargar_transformado()
+    total_filas = len(df)
+    logger.info(f'📁 Datos transformados encontrados: {total_filas} filas')
 
-        finally:
-            self.db.close()
+    session = SessionLocal()
+    try:
+        ciudades_map = preparar_ciudades(session, df)
+        registros_guardados = cargar_registros(session, df, ciudades_map)
+        registros_fallidos = total_filas - registros_guardados
 
-    def mostrar_resumen(self):
-        """Muestra resumen de datos en BD"""
-        try:
-            ciudades = self.db.query(Ciudad).count()
-            registros = self.db.query(RegistroClima).count()
+        guardar_metricas(session, total_filas, registros_guardados, registros_fallidos,
+                         'SUCCESS' if registros_fallidos == 0 else 'PARTIAL')
 
-            print("\n" + "="*50)
-            print("RESUMEN ETL - DADOS EN POSTGRESQL")
-            print("="*50)
-            print(f"Total Ciudades: {ciudades}")
-            print(f"Total Registros de Clima: {registros}")
-            print(f"Registros Extraídos: {self.registros_extraidos}")
-            print(f"Registros Guardados: {self.registros_guardados}")
-            print(f"Registros Fallidos: {self.registros_fallidos}")
-            print("="*50 + "\n")
+        print(f'✅ Registros procesados: {total_filas}')
+        print(f'✅ Registros guardados: {registros_guardados}')
+        print(f'✅ Registros fallidos: {registros_fallidos}')
+        print('\n' + '=' * 50 + '\n')
 
-        except Exception as e:
-            logger.error(f"Error mostrando resumen: {str(e)}")
+    except Exception as e:
+        session.rollback()
+        logger.error(f'❌ Error cargando datos en la BD: {str(e)}')
+        guardar_metricas(session, total_filas, 0, total_filas, 'FAILED')
+        raise
+    finally:
+        session.close()
 
-if __name__ == "__main__":
-    etl = WeatherstackETL()
-    exito = etl.ejecutar()
-    etl.mostrar_resumen()
-    
-    exit(0 if exito else 1)
+
+if __name__ == '__main__':
+    main()

@@ -15,12 +15,16 @@ DB_PORT = os.getenv('DB_PORT')
 DB_USER = os.getenv('DB_USER')
 DB_PASSWORD = os.getenv('DB_PASSWORD')
 DB_NAME = os.getenv('DB_NAME')
+DB_SSLMODE = os.getenv('DB_SSLMODE', 'require')
 
 # URL de conexión
-DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+DATABASE_URL = (
+    f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    + (f"?sslmode={DB_SSLMODE}" if DB_SSLMODE else "")
+)
 
 # Motor SQLAlchemy
-engine = create_engine(DATABASE_URL, echo=False)
+engine = create_engine(DATABASE_URL, echo=False, future=True, pool_pre_ping=True)
 
 # Base para modelos ORM
 Base = declarative_base()
@@ -28,9 +32,8 @@ Base = declarative_base()
 # Session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Metadata para inspeccionar la BD
+# Metadata para inspeccionar la BD cuando sea necesario
 metadata = MetaData()
-metadata.reflect(bind=engine)
 
 def get_db():
     """Obtiene una sesión de base de datos"""
