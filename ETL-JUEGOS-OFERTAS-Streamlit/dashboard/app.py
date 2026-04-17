@@ -30,11 +30,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# CONEXIÓN A POSTGRES
+# CONEXIÓN A POSTGRES / SUPABASE
 # -----------------------------
-engine = create_engine(
-    "postgresql://postgres:1221@localhost:5432/juegos_ofertas_etl"
-)
+DATABASE_URL = st.secrets["DATABASE_URL"]
+engine = create_engine(DATABASE_URL)
 
 @st.cache_data
 def load_data():
@@ -42,7 +41,12 @@ def load_data():
     df = pd.read_sql(query, engine)
     return df
 
-df = load_data()
+try:
+    df = load_data()
+except Exception as e:
+    st.error("No se pudo conectar a la base de datos.")
+    st.exception(e)
+    st.stop()
 
 # -----------------------------
 # TÍTULO
@@ -57,11 +61,22 @@ st.divider()
 # -----------------------------
 st.sidebar.title("🎛 Filtros")
 
+if df.empty:
+    st.warning("La tabla deals no tiene datos.")
+    st.stop()
+
+df["precio_oferta"] = pd.to_numeric(df["precio_oferta"], errors="coerce")
+df["rating_steam"] = pd.to_numeric(df["rating_steam"], errors="coerce")
+df["ahorro_porcentaje"] = pd.to_numeric(df["ahorro_porcentaje"], errors="coerce")
+df["titulo"] = df["titulo"].fillna("")
+
+precio_max_val = int(df["precio_oferta"].fillna(0).max()) if not df["precio_oferta"].dropna().empty else 0
+
 precio_max = st.sidebar.slider(
     "Precio máximo ($)",
     0,
-    int(df["precio_oferta"].max()),
-    int(df["precio_oferta"].max())
+    precio_max_val,
+    precio_max_val
 )
 
 rating_min = st.sidebar.slider(
@@ -74,37 +89,22 @@ rating_min = st.sidebar.slider(
 buscar = st.sidebar.text_input("🔎 Buscar juego")
 
 df = df[
-    (df["precio_oferta"] <= precio_max) &
-    (df["rating_steam"] >= rating_min)
+    (df["precio_oferta"].fillna(0) <= precio_max) &
+    (df["rating_steam"].fillna(0) >= rating_min)
 ]
 
 if buscar:
-    df = df[df["titulo"].str.contains(buscar, case=False)]
+    df = df[df["titulo"].str.contains(buscar, case=False, na=False)]
 
 # -----------------------------
 # KPIs
 # -----------------------------
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric(
-    "🎮 Juegos",
-    len(df)
-)
-
-col2.metric(
-    "💸 Descuento promedio",
-    f"{round(df['ahorro_porcentaje'].mean(),2)}%"
-)
-
-col3.metric(
-    "💲 Precio promedio",
-    f"${round(df['precio_oferta'].mean(),2)}"
-)
-
-col4.metric(
-    "⭐ Rating promedio",
-    f"{round(df['rating_steam'].mean(),2)}%"
-)
+col1.metric("🎮 Juegos", len(df))
+col2.metric("💸 Descuento promedio", f"{round(df['ahorro_porcentaje'].mean(), 2) if not df.empty else 0}%")
+col3.metric("💲 Precio promedio", f"${round(df['precio_oferta'].mean(), 2) if not df.empty else 0}")
+col4.metric("⭐ Rating promedio", f"{round(df['rating_steam'].mean(), 2) if not df.empty else 0}%")
 
 st.divider()
 
@@ -114,7 +114,6 @@ st.divider()
 col1, col2 = st.columns(2)
 
 with col1:
-
     fig1 = px.histogram(
         df,
         x="ahorro_porcentaje",
@@ -122,11 +121,9 @@ with col1:
         title="Distribución de descuentos",
         template="plotly_dark"
     )
-
     st.plotly_chart(fig1, use_container_width=True)
 
 with col2:
-
     fig2 = px.scatter(
         df,
         x="ahorro_porcentaje",
@@ -135,7 +132,6 @@ with col2:
         title="Relación Descuento vs Rating",
         template="plotly_dark"
     )
-
     st.plotly_chart(fig2, use_container_width=True)
 
 # -----------------------------
