@@ -1,9 +1,8 @@
 from scripts.extractor import CheapSharkExtractor
-from scripts.transformer import transformar_datos
+from scripts.transformador import transformar_datos
 from scripts.loader import cargar_datos
 
 import pandas as pd
-
 
 def run_pipeline():
 

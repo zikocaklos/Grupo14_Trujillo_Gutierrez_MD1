@@ -1,0 +1,802 @@
+[
+  {
+    "titulo":"Plataformas 3D #1",
+    "precio_oferta":28.06,
+    "precio_normal":47.11,
+    "ahorro_porcentaje":40.43,
+    "store_id":1,
+    "rating_steam":88.5,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Plataformas 3D #2",
+    "precio_oferta":0.97,
+    "precio_normal":9.59,
+    "ahorro_porcentaje":89.91,
+    "store_id":1,
+    "rating_steam":null,
+    "metacritic":81.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Simulador Urbano #3",
+    "precio_oferta":6.42,
+    "precio_normal":37.64,
+    "ahorro_porcentaje":82.94,
+    "store_id":8,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Cazador de Tesoros #4",
+    "precio_oferta":12.41,
+    "precio_normal":54.76,
+    "ahorro_porcentaje":77.33,
+    "store_id":8,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"T\u00e1ctico por Turnos #5",
+    "precio_oferta":10.18,
+    "precio_normal":35.33,
+    "ahorro_porcentaje":71.18,
+    "store_id":5,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Mundo Abierto #6",
+    "precio_oferta":8.74,
+    "precio_normal":44.36,
+    "ahorro_porcentaje":80.29,
+    "store_id":6,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Shooter Retro #7",
+    "precio_oferta":48.05,
+    "precio_normal":56.25,
+    "ahorro_porcentaje":14.57,
+    "store_id":7,
+    "rating_steam":null,
+    "metacritic":78.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Mundo Abierto #8",
+    "precio_oferta":4.41,
+    "precio_normal":9.91,
+    "ahorro_porcentaje":55.46,
+    "store_id":2,
+    "rating_steam":56.1,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Estrategia Global #9",
+    "precio_oferta":18.97,
+    "precio_normal":29.1,
+    "ahorro_porcentaje":34.8,
+    "store_id":6,
+    "rating_steam":null,
+    "metacritic":82.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Simulador Urbano #10",
+    "precio_oferta":6.97,
+    "precio_normal":21.96,
+    "ahorro_porcentaje":68.25,
+    "store_id":8,
+    "rating_steam":null,
+    "metacritic":55.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Roguelike Cl\u00e1sico #11",
+    "precio_oferta":11.83,
+    "precio_normal":56.46,
+    "ahorro_porcentaje":79.05,
+    "store_id":5,
+    "rating_steam":70.2,
+    "metacritic":46.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Roguelike Cl\u00e1sico #12",
+    "precio_oferta":20.42,
+    "precio_normal":50.39,
+    "ahorro_porcentaje":59.48,
+    "store_id":2,
+    "rating_steam":null,
+    "metacritic":40.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Shooter Retro #13",
+    "precio_oferta":42.68,
+    "precio_normal":52.39,
+    "ahorro_porcentaje":18.53,
+    "store_id":6,
+    "rating_steam":92.3,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Mundo Abierto #14",
+    "precio_oferta":1.68,
+    "precio_normal":7.49,
+    "ahorro_porcentaje":77.51,
+    "store_id":2,
+    "rating_steam":82.1,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Roguelike Cl\u00e1sico #15",
+    "precio_oferta":33.98,
+    "precio_normal":47.74,
+    "ahorro_porcentaje":28.82,
+    "store_id":6,
+    "rating_steam":95.3,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Shooter Retro #16",
+    "precio_oferta":7.01,
+    "precio_normal":20.04,
+    "ahorro_porcentaje":65.03,
+    "store_id":5,
+    "rating_steam":82.4,
+    "metacritic":52.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Shooter Retro #17",
+    "precio_oferta":2.75,
+    "precio_normal":26.23,
+    "ahorro_porcentaje":89.52,
+    "store_id":3,
+    "rating_steam":85.2,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"RPG de Fantas\u00eda #18",
+    "precio_oferta":6.01,
+    "precio_normal":15.28,
+    "ahorro_porcentaje":60.64,
+    "store_id":8,
+    "rating_steam":null,
+    "metacritic":90.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"F\u00fatbol Arcade #19",
+    "precio_oferta":11.08,
+    "precio_normal":14.08,
+    "ahorro_porcentaje":21.33,
+    "store_id":6,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Puzzle Psicol\u00f3gico #20",
+    "precio_oferta":10.73,
+    "precio_normal":16.55,
+    "ahorro_porcentaje":35.17,
+    "store_id":6,
+    "rating_steam":72.7,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"RPG de Fantas\u00eda #21",
+    "precio_oferta":3.15,
+    "precio_normal":8.38,
+    "ahorro_porcentaje":62.41,
+    "store_id":4,
+    "rating_steam":87.0,
+    "metacritic":72.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"T\u00e1ctico por Turnos #22",
+    "precio_oferta":6.29,
+    "precio_normal":51.63,
+    "ahorro_porcentaje":87.81,
+    "store_id":6,
+    "rating_steam":53.0,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Cazador de Tesoros #23",
+    "precio_oferta":1.79,
+    "precio_normal":15.7,
+    "ahorro_porcentaje":88.57,
+    "store_id":6,
+    "rating_steam":null,
+    "metacritic":76.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"RPG de Fantas\u00eda #24",
+    "precio_oferta":13.74,
+    "precio_normal":18.87,
+    "ahorro_porcentaje":27.17,
+    "store_id":3,
+    "rating_steam":64.6,
+    "metacritic":70.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Shooter Retro #25",
+    "precio_oferta":15.35,
+    "precio_normal":53.08,
+    "ahorro_porcentaje":71.08,
+    "store_id":7,
+    "rating_steam":90.7,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Aventura \u00c9pica #26",
+    "precio_oferta":5.19,
+    "precio_normal":30.62,
+    "ahorro_porcentaje":83.06,
+    "store_id":7,
+    "rating_steam":89.2,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Plataformas 3D #27",
+    "precio_oferta":6.49,
+    "precio_normal":18.84,
+    "ahorro_porcentaje":65.55,
+    "store_id":7,
+    "rating_steam":42.9,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"F\u00fatbol Arcade #28",
+    "precio_oferta":12.15,
+    "precio_normal":22.67,
+    "ahorro_porcentaje":46.39,
+    "store_id":2,
+    "rating_steam":null,
+    "metacritic":81.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Mundo Abierto #29",
+    "precio_oferta":26.6,
+    "precio_normal":36.33,
+    "ahorro_porcentaje":26.79,
+    "store_id":2,
+    "rating_steam":72.4,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Supervivencia Oscura #30",
+    "precio_oferta":27.52,
+    "precio_normal":35.69,
+    "ahorro_porcentaje":22.9,
+    "store_id":5,
+    "rating_steam":null,
+    "metacritic":57.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Roguelike Cl\u00e1sico #31",
+    "precio_oferta":39.05,
+    "precio_normal":48.6,
+    "ahorro_porcentaje":19.66,
+    "store_id":2,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Aventura \u00c9pica #32",
+    "precio_oferta":33.46,
+    "precio_normal":49.44,
+    "ahorro_porcentaje":32.33,
+    "store_id":4,
+    "rating_steam":43.7,
+    "metacritic":70.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Carreras Extrema #33",
+    "precio_oferta":8.01,
+    "precio_normal":10.04,
+    "ahorro_porcentaje":20.19,
+    "store_id":8,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Plataformas 3D #34",
+    "precio_oferta":23.83,
+    "precio_normal":34.78,
+    "ahorro_porcentaje":31.47,
+    "store_id":3,
+    "rating_steam":65.2,
+    "metacritic":58.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"T\u00e1ctico por Turnos #35",
+    "precio_oferta":7.52,
+    "precio_normal":14.52,
+    "ahorro_porcentaje":48.22,
+    "store_id":4,
+    "rating_steam":79.0,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Aventura \u00c9pica #36",
+    "precio_oferta":37.29,
+    "precio_normal":47.19,
+    "ahorro_porcentaje":20.98,
+    "store_id":6,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Roguelike Cl\u00e1sico #37",
+    "precio_oferta":10.46,
+    "precio_normal":32.83,
+    "ahorro_porcentaje":68.14,
+    "store_id":3,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Carreras Extrema #38",
+    "precio_oferta":13.27,
+    "precio_normal":22.86,
+    "ahorro_porcentaje":41.96,
+    "store_id":3,
+    "rating_steam":52.8,
+    "metacritic":90.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"RPG de Fantas\u00eda #39",
+    "precio_oferta":7.84,
+    "precio_normal":15.33,
+    "ahorro_porcentaje":48.89,
+    "store_id":6,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Simulador Urbano #40",
+    "precio_oferta":23.93,
+    "precio_normal":49.36,
+    "ahorro_porcentaje":51.52,
+    "store_id":5,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Roguelike Cl\u00e1sico #41",
+    "precio_oferta":23.98,
+    "precio_normal":43.44,
+    "ahorro_porcentaje":44.8,
+    "store_id":8,
+    "rating_steam":43.0,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"F\u00fatbol Arcade #42",
+    "precio_oferta":5.23,
+    "precio_normal":10.68,
+    "ahorro_porcentaje":51.02,
+    "store_id":5,
+    "rating_steam":64.3,
+    "metacritic":69.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Mundo Abierto #43",
+    "precio_oferta":7.85,
+    "precio_normal":19.7,
+    "ahorro_porcentaje":60.17,
+    "store_id":5,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Carreras Extrema #44",
+    "precio_oferta":7.69,
+    "precio_normal":9.37,
+    "ahorro_porcentaje":17.89,
+    "store_id":8,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Carreras Extrema #45",
+    "precio_oferta":33.12,
+    "precio_normal":51.77,
+    "ahorro_porcentaje":36.02,
+    "store_id":5,
+    "rating_steam":58.2,
+    "metacritic":92.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Supervivencia Oscura #46",
+    "precio_oferta":39.87,
+    "precio_normal":54.01,
+    "ahorro_porcentaje":26.18,
+    "store_id":2,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Puzzle Psicol\u00f3gico #47",
+    "precio_oferta":11.59,
+    "precio_normal":42.55,
+    "ahorro_porcentaje":72.75,
+    "store_id":2,
+    "rating_steam":65.0,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Supervivencia Oscura #48",
+    "precio_oferta":7.08,
+    "precio_normal":43.81,
+    "ahorro_porcentaje":83.85,
+    "store_id":5,
+    "rating_steam":59.6,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"RPG de Fantas\u00eda #49",
+    "precio_oferta":39.39,
+    "precio_normal":58.66,
+    "ahorro_porcentaje":32.85,
+    "store_id":8,
+    "rating_steam":40.8,
+    "metacritic":91.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"F\u00fatbol Arcade #50",
+    "precio_oferta":7.2,
+    "precio_normal":51.56,
+    "ahorro_porcentaje":86.04,
+    "store_id":3,
+    "rating_steam":null,
+    "metacritic":74.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Puzzle Psicol\u00f3gico #51",
+    "precio_oferta":15.2,
+    "precio_normal":21.45,
+    "ahorro_porcentaje":29.15,
+    "store_id":5,
+    "rating_steam":53.9,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Puzzle Psicol\u00f3gico #52",
+    "precio_oferta":26.53,
+    "precio_normal":42.1,
+    "ahorro_porcentaje":36.99,
+    "store_id":1,
+    "rating_steam":97.4,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Estrategia Global #53",
+    "precio_oferta":7.0,
+    "precio_normal":15.61,
+    "ahorro_porcentaje":55.16,
+    "store_id":8,
+    "rating_steam":84.8,
+    "metacritic":68.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Puzzle Psicol\u00f3gico #54",
+    "precio_oferta":24.29,
+    "precio_normal":35.71,
+    "ahorro_porcentaje":31.97,
+    "store_id":4,
+    "rating_steam":null,
+    "metacritic":91.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Estrategia Global #55",
+    "precio_oferta":12.65,
+    "precio_normal":28.19,
+    "ahorro_porcentaje":55.13,
+    "store_id":3,
+    "rating_steam":41.4,
+    "metacritic":62.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Shooter Retro #56",
+    "precio_oferta":5.87,
+    "precio_normal":53.77,
+    "ahorro_porcentaje":89.09,
+    "store_id":2,
+    "rating_steam":52.6,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Aventura \u00c9pica #57",
+    "precio_oferta":3.62,
+    "precio_normal":16.77,
+    "ahorro_porcentaje":78.41,
+    "store_id":1,
+    "rating_steam":47.8,
+    "metacritic":84.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"F\u00fatbol Arcade #58",
+    "precio_oferta":13.27,
+    "precio_normal":55.96,
+    "ahorro_porcentaje":76.29,
+    "store_id":3,
+    "rating_steam":null,
+    "metacritic":89.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Mundo Abierto #59",
+    "precio_oferta":9.23,
+    "precio_normal":26.38,
+    "ahorro_porcentaje":65.02,
+    "store_id":3,
+    "rating_steam":70.2,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Plataformas 3D #60",
+    "precio_oferta":9.57,
+    "precio_normal":20.82,
+    "ahorro_porcentaje":54.03,
+    "store_id":3,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"F\u00fatbol Arcade #61",
+    "precio_oferta":30.88,
+    "precio_normal":42.0,
+    "ahorro_porcentaje":26.47,
+    "store_id":5,
+    "rating_steam":79.6,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"RPG de Fantas\u00eda #62",
+    "precio_oferta":43.78,
+    "precio_normal":49.64,
+    "ahorro_porcentaje":11.81,
+    "store_id":8,
+    "rating_steam":96.2,
+    "metacritic":94.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Shooter Retro #63",
+    "precio_oferta":3.59,
+    "precio_normal":19.33,
+    "ahorro_porcentaje":81.42,
+    "store_id":1,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Puzzle Psicol\u00f3gico #64",
+    "precio_oferta":6.17,
+    "precio_normal":26.86,
+    "ahorro_porcentaje":77.03,
+    "store_id":5,
+    "rating_steam":null,
+    "metacritic":78.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Mundo Abierto #65",
+    "precio_oferta":25.5,
+    "precio_normal":45.29,
+    "ahorro_porcentaje":43.69,
+    "store_id":7,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Aventura \u00c9pica #66",
+    "precio_oferta":3.22,
+    "precio_normal":6.57,
+    "ahorro_porcentaje":51.02,
+    "store_id":3,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Mundo Abierto #67",
+    "precio_oferta":13.91,
+    "precio_normal":26.67,
+    "ahorro_porcentaje":47.84,
+    "store_id":1,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Carreras Extrema #68",
+    "precio_oferta":16.52,
+    "precio_normal":42.57,
+    "ahorro_porcentaje":61.19,
+    "store_id":2,
+    "rating_steam":96.1,
+    "metacritic":73.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"F\u00fatbol Arcade #69",
+    "precio_oferta":12.42,
+    "precio_normal":20.03,
+    "ahorro_porcentaje":38.0,
+    "store_id":3,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Aventura \u00c9pica #70",
+    "precio_oferta":5.47,
+    "precio_normal":46.06,
+    "ahorro_porcentaje":88.13,
+    "store_id":4,
+    "rating_steam":83.0,
+    "metacritic":88.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Aventura \u00c9pica #71",
+    "precio_oferta":23.84,
+    "precio_normal":59.0,
+    "ahorro_porcentaje":59.6,
+    "store_id":8,
+    "rating_steam":77.0,
+    "metacritic":68.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Puzzle Psicol\u00f3gico #72",
+    "precio_oferta":25.31,
+    "precio_normal":52.16,
+    "ahorro_porcentaje":51.47,
+    "store_id":8,
+    "rating_steam":60.6,
+    "metacritic":86.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Puzzle Psicol\u00f3gico #73",
+    "precio_oferta":2.67,
+    "precio_normal":16.65,
+    "ahorro_porcentaje":83.94,
+    "store_id":2,
+    "rating_steam":null,
+    "metacritic":82.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Cazador de Tesoros #74",
+    "precio_oferta":17.09,
+    "precio_normal":30.92,
+    "ahorro_porcentaje":44.74,
+    "store_id":6,
+    "rating_steam":44.2,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Estrategia Global #75",
+    "precio_oferta":25.37,
+    "precio_normal":41.76,
+    "ahorro_porcentaje":39.25,
+    "store_id":5,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Plataformas 3D #76",
+    "precio_oferta":0.89,
+    "precio_normal":7.38,
+    "ahorro_porcentaje":87.91,
+    "store_id":3,
+    "rating_steam":48.7,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Cazador de Tesoros #77",
+    "precio_oferta":27.76,
+    "precio_normal":34.34,
+    "ahorro_porcentaje":19.17,
+    "store_id":3,
+    "rating_steam":42.9,
+    "metacritic":69.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Simulador Urbano #78",
+    "precio_oferta":2.89,
+    "precio_normal":14.34,
+    "ahorro_porcentaje":79.86,
+    "store_id":4,
+    "rating_steam":null,
+    "metacritic":null,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"F\u00fatbol Arcade #79",
+    "precio_oferta":14.44,
+    "precio_normal":33.69,
+    "ahorro_porcentaje":57.15,
+    "store_id":8,
+    "rating_steam":null,
+    "metacritic":49.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  },
+  {
+    "titulo":"Carreras Extrema #80",
+    "precio_oferta":13.55,
+    "precio_normal":38.39,
+    "ahorro_porcentaje":64.71,
+    "store_id":8,
+    "rating_steam":82.0,
+    "metacritic":73.0,
+    "fecha_extraccion":"2026-04-17T00:59:19.738"
+  }
+]
